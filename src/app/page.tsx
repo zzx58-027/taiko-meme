@@ -1,8 +1,9 @@
-
-"use client"
+'use client'
 const Page = () => {
   return (
-    <div><w3m-button /></div>
+    <div>
+      <w3m-button />
+    </div>
   )
 }
 
