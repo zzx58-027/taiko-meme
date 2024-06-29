@@ -12,7 +12,7 @@ type TContracts = {
 }
 
 export const v0Contracts: TContracts = {
-  1: {
+  31337: {
     xen: {
       address: '0x0',
       abi: XenABI
