@@ -1,7 +1,6 @@
 import { Address } from 'viem'
 import { GetBalanceData } from 'wagmi/query'
 
-
 export type TMintInfo = {
   user: Address
   term: number
@@ -19,9 +18,9 @@ export type TStakeInfo = {
 }
 
 export type XenStatus = {
-  balance?: GetBalanceData,
-  userMint?: TMintInfo,
-  userStake?: TStakeInfo,
+  balance?: GetBalanceData
+  userMint?: TMintInfo
+  userStake?: TStakeInfo
   globalRank: number
   activeMinters: number
   activeStakes: number

@@ -7,6 +7,7 @@ import {
   useReadContract,
   useReadContracts
 } from 'wagmi'
+import { formatUnits } from '@/lib/utils'
 
 export const useContracts = () => {
   const chainId = useChainId()
@@ -104,13 +105,13 @@ export const useXenStatus = () => {
 
   if (data) {
     xenStatus = {
-      globalRank: data[0].result as number,
-      activeMinters: data[1].result as number,
-      activeStakes: data[2].result as number,
-      totalXenStaked: data[3].result as string,
-      totalSupply: data[4].result as string,
-      genesisTs: data[5].result as number,
-      currentMaxTerm: data[6].result as number,
+      globalRank: Number(data[0].result),
+      activeMinters: Number(data[1].result),
+      activeStakes: Number(data[2].result),
+      totalXenStaked: formatUnits(data[3].result as bigint, 18),
+      totalSupply: formatUnits(data[4].result as bigint, 18),
+      genesisTs: Number(data[5].result),
+      currentMaxTerm: Number(data[6].result),
       currentAMP: data[7].result as bigint,
       currentEAAR: data[8].result as bigint,
       currentAPY: data[9].result as bigint
