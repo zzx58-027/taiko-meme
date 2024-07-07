@@ -3,9 +3,9 @@ import { GetBalanceData } from 'wagmi/query'
 
 export type TMintInfo = {
   user: Address
-  term: number
-  maturityTs: number
-  rank: number
+  term: bigint
+  maturityTs: bigint
+  rank: bigint
   amplifier: bigint
   eaaRate: bigint
 }

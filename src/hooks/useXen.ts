@@ -15,6 +15,7 @@ export const useContracts = () => {
 }
 
 export const useXenStatus = () => {
+  const gcTime = 10000
   const contracts = useContracts()
   const { address } = useAccount()
   const xen = contracts.xen
@@ -24,7 +25,10 @@ export const useXenStatus = () => {
     isLoading: balanceIsLoading
   } = useBalance({
     address: address,
-    token: xen.address
+    token: xen.address,
+    query: {
+      gcTime
+    }
   })
 
   // get user mint info
@@ -34,7 +38,10 @@ export const useXenStatus = () => {
     isLoading: userStakeIsLoading
   } = useReadContract({
     ...xen,
-    functionName: 'getUserStake'
+    functionName: 'getUserStake',
+    query: {
+      gcTime
+    }
   })
   const {
     data: userMint,
@@ -42,7 +49,10 @@ export const useXenStatus = () => {
     isLoading: userMintIsLoading
   } = useReadContract({
     ...xen,
-    functionName: 'getUserMint'
+    functionName: 'getUserMint',
+    query: {
+      gcTime
+    }
   })
 
   const { data, isError, isLoading } = useReadContracts({
@@ -87,7 +97,10 @@ export const useXenStatus = () => {
         ...xen,
         functionName: 'getCurrentAPY'
       }
-    ]
+    ],
+    query: {
+      gcTime
+    }
   })
 
   let xenStatus: XenStatus = {

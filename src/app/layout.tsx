@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
+import { Toaster } from '@/components/ui/toaster'
 
 import { cookieToInitialState } from 'wagmi'
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         <Web3ModalProvider initialState={initialState}>
           {children}
         </Web3ModalProvider>
+        <Toaster></Toaster>
       </body>
     </html>
   )
