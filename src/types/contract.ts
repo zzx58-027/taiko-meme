@@ -1,4 +1,6 @@
 import { Address } from 'viem'
+import { GetBalanceData } from 'wagmi/query'
+
 
 export type TMintInfo = {
   user: Address
@@ -8,9 +10,27 @@ export type TMintInfo = {
   amplifier: bigint
   eaaRate: bigint
 }
-export type StakeInfo = {
+
+export type TStakeInfo = {
   term: number
   maturityTs: number
   amount: string
   apy: string
+}
+
+export type XenStatus = {
+  balance?: GetBalanceData,
+  userMint?: TMintInfo,
+  userStake?: TStakeInfo,
+  globalRank: number
+  activeMinters: number
+  activeStakes: number
+  totalXenStaked: string
+  totalSupply: string
+  genesisTs: number
+  currentMaxTerm: number
+  currentAMP: bigint
+  currentEAAR: bigint
+  currentAPY: bigint
+  grossReward?: bigint
 }
