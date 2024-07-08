@@ -6,9 +6,8 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/auto/button'
 
 const Page = () => {
   const card = {
@@ -26,8 +25,7 @@ const Page = () => {
       </CardHeader>
       <CardContent>
         <p>{card.content}</p>
-        <Input placeholder='Term, days (1 - 466)' />
- 
+        <Input placeholder="Term, days (1 - 466)" />
       </CardContent>
       <CardFooter>
         <p>{card.footer}</p>
