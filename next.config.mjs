@@ -10,10 +10,8 @@ const nextConfig = {
     config,
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
   ) => {
+    config.externals.push('pino-pretty','lokijs','encoding');
     config.plugins.push(
-      'pino-pretty',
-      'lokijs',
-      'encoding',
       AutoImport({
         imports: [
           'react',
