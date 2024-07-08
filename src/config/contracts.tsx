@@ -1,8 +1,9 @@
+import { Address } from 'viem'
 import XenABI from './abis/Xen.json'
 
 type TContractInfo = {
   xen: {
-    address: string
+    address: Address
     abi: typeof XenABI
   }
 }
@@ -18,22 +19,23 @@ export const v0Contracts: TContracts = {
       abi: XenABI
     }
   },
-  4: {
+  1: {
     xen: {
-      address: '0x0',
+      // official xen address
+      address: '0x06450dEe7FD2Fb8E39061434BAbCFC05599a6Fb8',
       abi: XenABI
     }
   }
 }
 
-const versions = ['v1', 'v1', 'v2', 'v3']
+const versions = ['v0']
 
 const perpContracts: Record<string, TContracts> = {
   [versions[0]]: v0Contracts
   // Assuming you will add versions v2 and v3 in the future
 }
 
-const defaultContracts = v0Contracts[31337]
+const defaultContracts = v0Contracts[1]
 
 export const getContracts = (chainId: number, version: string) => {
   if (version === 'latest') {

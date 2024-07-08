@@ -11,6 +11,9 @@ const nextConfig = {
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
   ) => {
     config.plugins.push(
+      'pino-pretty',
+      'lokijs',
+      'encoding',
       AutoImport({
         imports: [
           'react',
