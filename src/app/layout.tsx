@@ -3,8 +3,8 @@ import '@/styles/globals.css'
 import { PropsWithChildren } from 'react'
 
 import type { Metadata } from 'next'
-import { headers } from 'next/headers'
 import { Toaster } from '@/components/ui/toaster'
+import { PageTextHeroBanner } from '@/components/common'
 
 export const metadata: Metadata = {
   title: 'Taiko Meme',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 // https://nextjs.org/docs/app/building-your-application/optimizing/fonts#with-tailwind-css
-import { NextFontSources } from '@/components/ui/font/index'
+import { NextFontSources } from '@/components/ui/auto/font'
 const { mochiy_pop_one, montserrat, covered_by_your_grace } = NextFontSources
 
 import { Header } from '@/components/page-header/header'
@@ -35,6 +35,7 @@ export default function RootLayout({
       className={`${montserrat.variable} ${mochiy_pop_one.variable} ${covered_by_your_grace.variable}`}
     >
       <body>
+        <Toaster />
         <RootProvider>
           <Layout>{children}</Layout>
         </RootProvider>
@@ -50,21 +51,41 @@ const Layout: WithChildComponent = ({ children }) => {
       <Background className="absolute -z-10" />
       <div
         className={cn(
-          'h-screen',
-          'xs:mx-[16px] lg:mx-[120px]',
+          'select-none',
+          'min-h-screen',
+          'xs:pb-[3.75rem]',
+          'xs:mx-[16px] lg:mx-[calc(120/1440*100vw)]',
           'xs:pt-[16px] lg:pt-[20px]'
         )}
       >
         <Header
           className={cn(
             'xs:h-[60px] lg:h-[74px]',
-            'xs:mb-[24px] lg:mb-[80px]',
-            'rounded-[60px]',
-            'backdrop-blur-[24px]',
-            'bg-white bg-opacity-20'
+            'xs:mb-[calc(24/756*100vh)] lg:mb-[calc(80/858*100vh)]'
           )}
         />
-        {children}
+        <PageTextHeroBanner
+          className={cn(
+            'xs:mb-[calc(24/756*100vh)] lg:mb-[calc(80/858*100vh)]',
+            'text-white text-center',
+            'xs:text-[64px] lg:text-[128px]'
+          )}
+        />
+        <div className={cn('relative')}>
+          <Grid
+            className={cn('xs:mx-4 lg:mx-[calc(200/1440*100vw)]', 'xs:mb-6')}
+          >
+            {children}
+          </Grid>
+          <MediaBar
+            className={cn(
+              'lg:absolute lg:right-0 lg:top-0',
+              'gap-5 text-[24px]',
+              'xs:place-content-center',
+              'xs:grid-flow-col lg:grid-flow-row'
+            )}
+          />
+        </div>
       </div>
       <Footer
         className={cn(
@@ -78,6 +99,27 @@ const Layout: WithChildComponent = ({ children }) => {
         )}
         logoContainerClass="xs:justify-center"
       />
+    </React.Fragment>
+  )
+}
+
+const MediaBar: FC<{ className: string }> = ({ className }) => {
+  return (
+    <React.Fragment>
+      <Grid className={cn(className)}>
+        <Grid className="border rounded-full size-[52px] place-content-center text-white text-[24px] hover:bg-[#E71998] hover:border-none hover:cursor-pointer">
+          <div className="i-simple-icons-x" />
+        </Grid>
+        <Grid className="border rounded-full size-[52px] place-content-center text-white text-[24px] hover:bg-[#E71998] hover:border-none hover:cursor-pointer">
+          <div className="i-simple-icons-medium" />
+        </Grid>
+        <Grid className="border rounded-full size-[52px] place-content-center text-white text-[24px] hover:bg-[#E71998] hover:border-none hover:cursor-pointer">
+          <div className="i-simple-icons-telegram text-white size-[52px]" />
+        </Grid>
+        <Grid className="border rounded-full size-[52px] place-content-center text-white text-[24px] hover:bg-[#E71998] hover:border-none hover:cursor-pointer">
+          <div className="i-simple-icons-discord" />
+        </Grid>
+      </Grid>
     </React.Fragment>
   )
 }

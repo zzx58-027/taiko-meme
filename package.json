@@ -13,6 +13,7 @@
   "dependencies": {
     "@iconify/tools": "^4.0.4",
     "@iconify/utils": "^2.1.25",
+    "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.1",
@@ -21,7 +22,10 @@
     "@web3modal/wagmi": "^5.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "decimal.js": "^10.4.3",
+    "gsap": "^3.12.5",
+    "lil-gui": "^0.19.2",
     "lucide-react": "^0.397.0",
     "next": "14.2.4",
     "react": "^18",

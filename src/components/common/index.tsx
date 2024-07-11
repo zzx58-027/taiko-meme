@@ -1,3 +1,11 @@
+'use client'
+import { usePathname } from 'next/navigation'
+interface ComponentProps {
+  className: string
+}
+
+export { LogoContainer, PageTextHeroBanner }
+
 const LogoContainer = ({
   className,
   itemsGap,
@@ -27,4 +35,14 @@ const LogoContainer = ({
     </NextLink>
   )
 }
-export { LogoContainer }
+
+const PageTextHeroBanner: FC<ComponentProps> = ({ className }) => {
+  // 在 App 路由系统中, 获取路由相关内容需要和 Page 路由系统中区别开来.
+  // https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#step-5-migrating-routing-hooks
+  const currentPath = usePathname().slice(1).toUpperCase()
+  return (
+    <Font_CoveredByYourGrace className={cn(className)}>
+      {currentPath}
+    </Font_CoveredByYourGrace>
+  )
+}

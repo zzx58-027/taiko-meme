@@ -25,7 +25,7 @@ const covered_by_your_grace = Covered_By_Your_Grace({
 })
 
 interface FontComp_CustomProps {
-  usePropChildren?: boolean
+  directlyUsingChildren?: boolean
   // JSX.IntrinsicAttributes 是 TypeScript 中用于描述 JSX 元素属性的类型。它包含一组内置属性，用于表示任何 JSX 元素可能具有的属性。这些属性包括 key 和 ref，它们在 JSX 中使用常见且重要。
   // JSX.IntrinsicElements 是 TypeScript 中用于描述 JSX 元素标签的类型。它包含了所有原生 HTML 元素（如 div、span、input 等），以及它们的属性，用于表示 JSX 中可能使用的元素和它们支持的属性。
   wrapWithTag?: keyof JSX.IntrinsicElements
@@ -42,14 +42,14 @@ const Font_Montserrat = forwardRef<
     {
       className,
       children,
-      usePropChildren = false,
+      directlyUsingChildren = false,
       wrapWithTag: Tag = 'p',
       ...rest
     },
     ref
   ) => (
     <Slot ref={ref} className={cn('font-Montserrat', className)} {...rest}>
-      {usePropChildren ? children : <Tag>{children}</Tag>}
+      {directlyUsingChildren ? children : <Tag>{children}</Tag>}
     </Slot>
   )
 )
@@ -62,14 +62,14 @@ const Font_MochiyPopPOne = forwardRef<
     {
       className,
       children,
-      usePropChildren = false,
+      directlyUsingChildren = false,
       wrapWithTag: Tag = 'p',
       ...rest
     },
     ref
   ) => (
     <Slot ref={ref} className={cn('font-MochiyPopPOne', className)} {...rest}>
-      {usePropChildren ? children : <Tag>{children}</Tag>}
+      {directlyUsingChildren ? children : <Tag>{children}</Tag>}
     </Slot>
   )
 )
@@ -82,7 +82,7 @@ const Font_CoveredByYourGrace = forwardRef<
     {
       className,
       children,
-      usePropChildren = false,
+      directlyUsingChildren = false,
       wrapWithTag: Tag = 'p',
       ...rest
     },
@@ -93,7 +93,7 @@ const Font_CoveredByYourGrace = forwardRef<
       className={cn('font-CoveredByYourGrace', className)}
       {...rest}
     >
-      {usePropChildren ? children : <Tag>{children}</Tag>}
+      {directlyUsingChildren ? children : <Tag>{children}</Tag>}
     </Slot>
   )
 )

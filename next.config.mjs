@@ -10,7 +10,7 @@ const nextConfig = {
     config,
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
   ) => {
-    config.externals.push('pino-pretty','lokijs','encoding');
+    config.externals.push('pino-pretty', 'lokijs', 'encoding')
     config.plugins.push(
       AutoImport({
         imports: [
@@ -26,7 +26,7 @@ const nextConfig = {
           // Type Import
           {
             from: 'react',
-            imports: ['FC'],
+            imports: ['FC', 'PropsWithChildren', 'ReactNode'],
             type: true
           },
           {
@@ -54,6 +54,7 @@ const nextConfig = {
         // dirs 配置项只支持文件夹路径.
         dirs: [
           './src/lib',
+          './src/hooks',
           // './src/components/ui' // This way worked.
           './src/components/ui/font', // Work Around for `imports` not work for exports from tsx component.
           './src/components/ui/auto'
