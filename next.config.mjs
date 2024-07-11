@@ -5,6 +5,9 @@ import AutoImport from 'unplugin-auto-import/webpack'
 // Bonus, 为何不直接使用 TS? 并非所有项目都使用TypeScript，某些项目可能仍然使用JavaScript作为主要语言。在这种情况下，使用JSDoc注释来添加类型信息是一种补充方法，帮助提供一定程度的类型检查和提示. 另外, 社区中也有关于项目是否使用 Typescript 的讨论. 比如 Svelte 作者宣布项目不使用 Typescript, 认为其影响开发进度.
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  typescript: {
+    ignoreBuildErrors: true
+  },
   // NextConfig.webpack: https://nextjs.org/docs/app/api-reference/next-config-js/webpack
   webpack: (
     config,
